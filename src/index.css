@@ -1,0 +1,40 @@
+:root {
+  --otis-primary: #0ba5df;
+  --otis-primary-dark: #0783bb;
+  --otis-background: #f5f8fa;
+  --otis-text: #293b4b;
+  --otis-title: #17303f;
+  --otis-muted: #8292a1;
+  --otis-border: #d8e1e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--otis-background);
+  color: var(--otis-text);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(11, 165, 223, 0.45);
+  outline-offset: 2px;
+}

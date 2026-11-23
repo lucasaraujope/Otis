@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS | Chamados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="logo" href="#inicio" aria-label="OTIS início">OTIS</a>
+    <nav aria-label="Navegação principal">
+      <a href="#chamados">Chamados em andamento</a>
+      <a href="#historico">Histórico</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="grafico" aria-labelledby="titulo-grafico">
+      <div class="grafico-topo">
+        <div>
+          <h1 id="titulo-grafico">Atendimentos realizados no ano</h1>
+          <p class="grafico-sub" id="resumo-grafico"></p>
+        </div>
+        <p class="grafico-total">
+          <span>Total no ano</span>
+          <strong id="total-grafico">—</strong>
+        </p>
+      </div>
+      <figure class="grafico-area">
+        <div class="grafico-svg" id="grafico-svg"></div>
+        <div class="grafico-tooltip" id="grafico-tooltip" aria-hidden="true"></div>
+      </figure>
+      <div class="sr-only" id="grafico-tabela"></div>
+    </section>
+
+    <section class="lista" id="chamados">
+      <h2>Ocorrências concertadas com sucesso</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Local do chamado</h3>
+              <p>O que está ocorrendo</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao">
+              <span>Descrição</span>
+              <p>Desfecho do ocorrido</p>
+              <small>Informações adicionais podem aparecer neste espaço.</small>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
