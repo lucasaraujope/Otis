@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { colors } from '../../theme/colors.js';
 
 export const HeaderBar = styled.header`
@@ -10,7 +11,7 @@ export const HeaderInner = styled.div`
   gap: 24px;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(NavLink)`
   flex-shrink: 0;
   color: #ffffff;
   font-size: clamp(38px, 6vw, 64px);
@@ -29,7 +30,7 @@ export const Nav = styled.nav`
   gap: clamp(16px, 4vw, 48px);
 `;
 
-export const NavLink = styled.a`
+export const NavItem = styled(NavLink)`
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -39,7 +40,7 @@ export const NavLink = styled.a`
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  opacity: ${({ $active }) => ($active ? 1 : 0.82)};
+  opacity: 0.82;
   transition: opacity 0.15s ease;
 
   &::after {
@@ -51,9 +52,17 @@ export const NavLink = styled.a`
     height: 3px;
     border-radius: 3px;
     background: #ffffff;
-    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
+    transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.18s ease;
+  }
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.active::after {
+    transform: scaleX(1);
   }
 
   &:hover,

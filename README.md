@@ -8,50 +8,66 @@ Painel de chamados da OTIS. Aplicação front-end em **React** (Vite) com **Boot
 |-------------|-----------|
 | UI          | React 19 + Vite 8 |
 | Estilo      | styled-components 6 + Bootstrap 5 (CSS) |
+| Roteamento  | React Router 7 |
 | Linguagem   | JavaScript (JSX) |
 | Runtime     | Node.js 20+ |
+
+## Telas
+
+| Rota | Tela |
+|------|------|
+| `/` | **Chamados em Andamento** |
+| `/historico` | **Histórico** |
 
 ## Estrutura do projeto
 
 ```
 .
-├── index.html                      # Entrada do Vite
+├── index.html
 ├── vite.config.js
 ├── package.json
 ├── src/
-│   ├── main.jsx                    # Bootstrap do React + CSS global
-│   ├── App.jsx
+│   ├── main.jsx
+│   ├── App.jsx                       # Rotas + Header compartilhado
 │   ├── index.css
 │   ├── theme/
-│   │   └── colors.js               # Paleta OTIS, níveis de urgência e status
+│   │   └── colors.js                 # Paleta OTIS, urgência e status
 │   ├── data/
-│   │   └── chamados.js             # Dados fictícios dos chamados
+│   │   ├── chamados.js               # Chamados em andamento (fictícios)
+│   │   └── historico.js              # Atendimentos por mês + ocorrências concluídas
 │   ├── pages/
-│   │   └── ChamadosEmAndamento/
-│   │       ├── ChamadosEmAndamento.jsx
-│   │       └── styles.js
+│   │   ├── ChamadosEmAndamento/
+│   │   └── Historico/
 │   └── components/
-│       ├── Header/
-│       ├── Mapa/
-│       ├── Tag/
-│       ├── ChamadoCard/
-│       └── UrgenciaSection/
-└── legacy/                         # Versão estática anterior (HTML/CSS/JS)
+│       ├── Header/                   # Navegação (NavLink)
+│       ├── Mapa/                     # Mapa simulado com pinos
+│       ├── Tag/                      # Tags de urgência/status
+│       ├── ChamadoCard/              # Card expansível de chamado
+│       ├── UrgenciaSection/          # Seção por urgência
+│       ├── GraficoAtendimentos/      # Gráfico SVG de barras + tabela acessível
+│       └── HistoricoCard/            # Card expansível de ocorrência concluída
+└── legacy/                           # Versão estática anterior (HTML/CSS/JS)
 ```
 
 Cada componente possui `Componente.jsx` e `styles.js` (styled-components).
 
-## Tela Chamados em Andamento
+## Tela Chamados em Andamento (`/`)
 
-- Mapa simulado centralizado com pinos coloridos por urgência e tooltip com a localização.
+- Mapa simulado centralizado com pinos coloridos por urgência e tooltip acessível.
 - Título `Chamados`.
-- Três seções, na ordem: **Menos urgência**, **Urgência Média**, **Urgência extrema**.
+- Seções: **Menos urgência**, **Urgência Média**, **Urgência extrema** (grid responsivo).
 - Cards "Local do Chamado" fechados por padrão, com seta que expande/recolhe.
-- Card expandido exibe: tag de gravidade (esquerda) e de status (direita); Localização e Data e hora; Descrição; Técnico responsável e Andamento; e o texto azul **Recolher**.
+- Expandido: tag de gravidade + status; Localização e Data e hora; Descrição; Técnico responsável e Andamento; texto azul **Recolher**.
+
+## Tela Histórico (`/historico`)
+
+- Card "Atendimentos realizados no ano" com gráfico de barras SVG (jan–dez), total, média, tooltip e tabela oculta para leitores de tela.
+- Gráfico responsivo (recriado no `ResizeObserver`).
+- Seção "Ocorrências consertadas com sucesso" com cards expansíveis; ao expandir exibe status, Localização, Data e hora, Descrição, Técnico responsável, Andamento, link "Detalhes do chamado" e **Recolher**.
 
 ## Design / paleta
 
-Mantém a paleta da tela Histórico (versão em `legacy/`):
+A paleta é compartilhada pelas duas telas:
 
 - Azul principal `#0ba5df` / escuro `#0783bb`
 - Fundo `#f5f8fa`, texto `#293b4b`, títulos `#17303f`
@@ -69,13 +85,15 @@ Acesse <http://localhost:5173>.
 
 ```bash
 npm run build     # build de produção em dist/
-npm run preview   # pré-visualiza build
+npm run preview   # pré-visualiza build (com fallback SPA)
 ```
 
 ## Dados
 
-Os chamados são fictícios e ficam em `src/data/chamados.js`. Cada registro possui:
-`id`, `urgencia` (`baixa` | `media` | `extrema`), `status` (`Aberto` | `Em andamento` | `Concluído`), `localizacao`, `dataHora`, `descricao`, `tecnico`, `andamento` e `posicao` (top/left para o pino no mapa).
+Dados fictícios em `src/data/`:
+
+- `chamados.js`: `id`, `urgencia` (`baixa` | `media` | `extrema`), `status`, `localizacao`, `dataHora`, `descricao`, `tecnico`, `andamento`, `posicao`.
+- `historico.js`: `atendimentosPorMes` e `ocorrenciasConcluidas`.
 
 ## Git
 
@@ -86,12 +104,12 @@ git fetch origin
 git pull origin segunda-tela-albano
 ```
 
-Branch de trabalho: `feature/opencode-setup` (renomeada localmente para `main`).
+Branch local de trabalho: `main` (upstream em `origin/feature/opencode-setup`).
 
 ```bash
 git add .
 git commit -m "chore: update project via OpenCode"
-git push origin feature/opencode-setup
+git push origin main:feature/opencode-setup
 ```
 
 > Não sobrescreva alterações locais sem confirmação. Verifique `git status` antes de sincronizar.
