@@ -1,0 +1,13 @@
+{
+  "name": "otis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Painel de chamados OTIS - front-end estatico em HTML, CSS e JavaScript.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
