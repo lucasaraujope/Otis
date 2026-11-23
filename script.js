@@ -26,14 +26,7 @@ botoesDeRecolher.forEach((botao) => {
   });
 });
 
-/* ------------------------------------------------------------------ */
-/* Gráfico de atendimentos do ano                                      */
-/* ------------------------------------------------------------------ */
 
-/*
- * Dados do gráfico: de janeiro a dezembro.
- * Substitua os valores de exemplo pelos números reais de cada mês.
- */
 const ATENDIMENTOS_POR_MES = [
   { mes: 'Janeiro', valor: 38 },
   { mes: 'Fevereiro', valor: 44 },
