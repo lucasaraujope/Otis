@@ -46,7 +46,9 @@ Painel de chamados da OTIS. Aplicação front-end em **React** (Vite) com **Boot
 │       ├── UrgenciaSection/          # Seção por urgência
 │       ├── GraficoAtendimentos/      # Gráfico SVG de barras + tabela acessível
 │       └── HistoricoCard/            # Card expansível de ocorrência concluída
-└── legacy/                           # Versão estática anterior (HTML/CSS/JS)
+└── legacy/                           # Versões estáticas anteriores
+    ├── index.html, style.css, ...    # Versão estática original
+    └── segunda-tela-albano/          # Variante estática da branch segunda-tela-albano
 ```
 
 Cada componente possui `Componente.jsx` e `styles.js` (styled-components).

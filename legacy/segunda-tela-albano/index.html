@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS | Chamados</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="erros/erros.css">
+  <link rel="stylesheet" href="funcionarios/func.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="logo" href="#inicio" aria-label="OTIS início">OTIS</a>
+    <nav aria-label="Navegação principal">
+      <a href="#chamados">Chamados em andamento</a>
+      <a href="#historico">Histórico</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="grafico" aria-labelledby="titulo-grafico">
+      <div class="grafico-topo">
+        <div>
+          <h1 id="titulo-grafico">Atendimentos realizados no ano</h1>
+          <p class="grafico-sub" id="resumo-grafico"></p>
+        </div>
+        <p class="grafico-total">
+          <span>Total no ano</span>
+          <strong id="total-grafico">—</strong>
+        </p>
+      </div>
+      <figure class="grafico-area">
+        <div class="grafico-svg" id="grafico-svg"></div>
+        <div class="grafico-tooltip" id="grafico-tooltip" aria-hidden="true"></div>
+      </figure>
+      <div class="sr-only" id="grafico-tabela"></div>
+    </section>
+
+    <section class="lista" id="chamados">
+      <h2>Ocorrências concertadas com sucesso</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Local do chamado</h3>
+              <p>O que está ocorrendo</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao">
+              <span>Descrição</span>
+              <p>Desfecho do ocorrido</p>
+              <small>Informações adicionais podem aparecer neste espaço.</small>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-topo">
+            <div class="resumo"><h3>Local do chamado</h3><p>O que está ocorrendo</p></div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status">Concluído</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Endereço do chamado</strong></div>
+              <div><span>Data e hora</span><strong>Data do registro</strong></div>
+            </div>
+            <div class="descricao"><span>Descrição</span><p>Desfecho do ocorrido</p><small>Informações adicionais podem aparecer neste espaço.</small></div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Técnico responsável</strong></div>
+              <div><span>Andamento</span><strong>Finalizado com sucesso</strong></div>
+            </div>
+            <div class="acoes"><a href="#detalhes">Detalhes do chamado</a><button class="recolher" type="button">Recolher</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lista" id="falhas">
+      <h2>Ocorrências falhas</h2>
+      <div class="cards">
+
+        <article class="card card-falha">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Edifício Central - Elevador 2</h3>
+              <p>Falha no sistema de freio</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status status-falha">Finalizado</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Av. Paulista, 1000 - São Paulo</strong></div>
+              <div><span>Data e hora</span><strong>12/11/2026 - 14:30</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Descrição</span><strong>Desfecho sem reparo</strong></div>
+              <div><span>Prejuízo</span><strong>Peça danificada</strong></div>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Carlos Mendes</strong></div>
+              <div><span>Andamento</span><strong>Finalizado</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-falha">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Shopping Norte - Escada rolante 1</h3>
+              <p>Interrupção de energia</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status status-falha">Finalizado</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Rua das Flores, 250 - Campinas</strong></div>
+              <div><span>Data e hora</span><strong>10/11/2026 - 09:15</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Descrição</span><strong>Retorno de energia sem sucesso</strong></div>
+              <div><span>Prejuízo</span><strong>Equipamento parado</strong></div>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Ana Souza</strong></div>
+              <div><span>Andamento</span><strong>Finalizado</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-falha">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Hospital Vida - Elevador 4</h3>
+              <p>Passageiros presos</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status status-falha">Finalizado</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Rua da Saúde, 80 - Mogi Guaçu</strong></div>
+              <div><span>Data e hora</span><strong>08/11/2026 - 18:45</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Descrição</span><strong>Atendimento fora do prazo</strong></div>
+              <div><span>Prejuízo</span><strong>Atraso no resgate</strong></div>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Roberto Lima</strong></div>
+              <div><span>Andamento</span><strong>Finalizado</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-falha">
+          <div class="card-topo">
+            <div class="resumo">
+              <h3>Condomínio Aurora - Elevador 1</h3>
+              <p>Falha na porta</p>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir chamado" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="status status-falha">Finalizado</div>
+            <div class="dados">
+              <div><span>Localização</span><strong>Rua do Sol, 45 - Campinas</strong></div>
+              <div><span>Data e hora</span><strong>05/11/2026 - 07:50</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Descrição</span><strong>Reparo não concluído</strong></div>
+              <div><span>Prejuízo</span><strong>Elevador desativado</strong></div>
+            </div>
+            <div class="dados dados-finais">
+              <div><span>Responsável</span><strong>Fernanda Alves</strong></div>
+              <div><span>Andamento</span><strong>Finalizado</strong></div>
+            </div>
+            <div class="acoes">
+              <a href="#detalhes">Detalhes do chamado</a>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="lista" id="funcionarios">
+      <h2>Funcionários e seus casos</h2>
+      <div class="cards">
+
+        <article class="card card-funcionario">
+          <div class="card-topo">
+            <div class="resumo">
+              <img class="foto" src="imagens/img1.jpg" alt="Foto de Carlos Mendes">
+              <h3>Carlos Mendes</h3>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir funcionário" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="dados">
+              <div><span>Quantidade de chamados atendidos</span><strong>48</strong></div>
+              <div><span>Tempo como técnico</span><strong>5 anos</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Chamados com sucesso</span><strong>42</strong></div>
+              <div><span>Chamados com falha</span><strong>6</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Avaliação</span><strong class="estrelas" aria-label="Avaliação: 5 de 5">★★★★★</strong></div>
+            </div>
+            <div class="acoes">
+              <span></span>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-funcionario">
+          <div class="card-topo">
+            <div class="resumo">
+              <img class="foto" src="imagens/img2.jpg" alt="Foto de Ana Souza">
+              <h3>Ana Souza</h3>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir funcionário" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="dados">
+              <div><span>Quantidade de chamados atendidos</span><strong>36</strong></div>
+              <div><span>Tempo como técnico</span><strong>3 anos</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Chamados com sucesso</span><strong>33</strong></div>
+              <div><span>Chamados com falha</span><strong>3</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Avaliação</span><strong class="estrelas" aria-label="Avaliação: 5 de 5">★★★★★</strong></div>
+            </div>
+            <div class="acoes">
+              <span></span>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-funcionario">
+          <div class="card-topo">
+            <div class="resumo">
+              <img class="foto" src="imagens/img3.jpg" alt="Foto de Roberto Lima">
+              <h3>Roberto Lima</h3>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir funcionário" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="dados">
+              <div><span>Quantidade de chamados atendidos</span><strong>52</strong></div>
+              <div><span>Tempo como técnico</span><strong>8 anos</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Chamados com sucesso</span><strong>44</strong></div>
+              <div><span>Chamados com falha</span><strong>8</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Avaliação</span><strong class="estrelas" aria-label="Avaliação: 4 de 5">★★★★☆</strong></div>
+            </div>
+            <div class="acoes">
+              <span></span>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-funcionario">
+          <div class="card-topo">
+            <div class="resumo">
+              <img class="foto" src="imagens/img4.jpg" alt="Foto de Fernanda Alves">
+              <h3>Fernanda Alves</h3>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir funcionário" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="dados">
+              <div><span>Quantidade de chamados atendidos</span><strong>29</strong></div>
+              <div><span>Tempo como técnico</span><strong>2 anos</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Chamados com sucesso</span><strong>25</strong></div>
+              <div><span>Chamados com falha</span><strong>4</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Avaliação</span><strong class="estrelas" aria-label="Avaliação: 4 de 5">★★★★☆</strong></div>
+            </div>
+            <div class="acoes">
+              <span></span>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-funcionario">
+          <div class="card-topo">
+            <div class="resumo">
+              <img class="foto" src="imagens/img5.jpg" alt="Foto de Paulo Ribeiro">
+              <h3>Paulo Ribeiro</h3>
+            </div>
+            <button class="seta" type="button" aria-label="Expandir funcionário" aria-expanded="false">⌄</button>
+          </div>
+          <div class="detalhes" hidden>
+            <div class="dados">
+              <div><span>Quantidade de chamados atendidos</span><strong>41</strong></div>
+              <div><span>Tempo como técnico</span><strong>6 anos</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Chamados com sucesso</span><strong>38</strong></div>
+              <div><span>Chamados com falha</span><strong>3</strong></div>
+            </div>
+            <div class="dados">
+              <div><span>Avaliação</span><strong class="estrelas" aria-label="Avaliação: 5 de 5">★★★★★</strong></div>
+            </div>
+            <div class="acoes">
+              <span></span>
+              <button class="recolher" type="button">Recolher</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

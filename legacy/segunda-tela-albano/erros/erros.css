@@ -1,0 +1,18 @@
+#falhas {
+  margin-top: 56px;
+}
+
+.card-falha {
+  border-left-color: #c0504d;
+}
+
+.status-falha {
+  background: #fdeeed;
+  color: #b3403d;
+}
+
+@media (max-width: 650px) {
+  #falhas {
+    margin-top: 40px;
+  }
+}
