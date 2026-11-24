@@ -43,4 +43,5 @@ export const statusCores = {
   Aberto: { color: '#0b6fa4', soft: '#e3f4fc', border: '#b9dff0' },
   'Em andamento': { color: '#b07d00', soft: '#fff6e0', border: '#f0d999' },
   Concluído: { color: '#32785c', soft: '#eff5f2', border: '#bcdccd' },
+  Finalizado: { color: '#b3403d', soft: '#fdeeed', border: '#f2c9c8' },
 };

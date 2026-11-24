@@ -67,7 +67,7 @@ export const Nav = styled.nav`
   background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(6px);
 
-  @media (max-width: 700px) {
+  @media (max-width: 1080px) {
     flex: 1 1 100%;
   }
 `;
@@ -77,8 +77,8 @@ export const NavItem = styled(NavLink)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 9px 16px;
+  gap: 7px;
+  padding: 9px 14px;
   border-radius: 999px;
   color: #ffffff;
   font-size: 13px;
@@ -88,10 +88,6 @@ export const NavItem = styled(NavLink)`
   opacity: 0.88;
   transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease,
     box-shadow 0.18s ease;
-
-  .nav-label-short {
-    display: none;
-  }
 
   &:hover,
   &:focus-visible {
@@ -106,19 +102,17 @@ export const NavItem = styled(NavLink)`
     box-shadow: 0 6px 16px rgba(7, 83, 120, 0.25);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1080px) {
     flex: 1 1 0;
-    padding: 9px 10px;
+    padding: 9px 8px;
     font-size: 12px;
   }
 
-  @media (max-width: 640px) {
-    .nav-label-full {
-      display: none;
-    }
+  @media (max-width: 430px) {
+    gap: 0;
 
-    .nav-label-short {
-      display: inline;
+    .nav-text {
+      display: none;
     }
   }
 `;
@@ -144,7 +138,7 @@ export const NavDot = styled.span`
   background: currentColor;
   animation: ${piscar} 2s ease-in-out infinite;
 
-  @media (max-width: 640px) {
+  @media (max-width: 430px) {
     display: none;
   }
 `;

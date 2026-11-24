@@ -1,8 +1,8 @@
 # Relatório Técnico — OTIS
 
-Data da análise: 2026-11-23
+Data da análise: 2026-11-24
 Repositório: https://github.com/lucasaraujope/Otis.git
-Branch remota padrão: `segunda-tela-albano`
+Branches remotas: `main` (trabalho) e `segunda-tela-albano` (ainda padrão no GitHub)
 
 ## 1. Estrutura de diretórios
 
@@ -19,14 +19,20 @@ otis/
 │   ├── main.jsx
 │   ├── App.jsx                     # BrowserRouter + rotas + Header
 │   ├── index.css
+│   ├── assets/
+│   │   └── funcionarios/           # Fotos dos técnicos (img1–img5.jpg)
 │   ├── theme/
 │   │   └── colors.js
 │   ├── data/
 │   │   ├── chamados.js
-│   │   └── historico.js
+│   │   ├── historico.js
+│   │   ├── falhas.js
+│   │   └── funcionarios.js
 │   ├── pages/
 │   │   ├── ChamadosEmAndamento/    (ChamadosEmAndamento.jsx, styles.js)
-│   │   └── Historico/              (Historico.jsx, styles.js)
+│   │   ├── Historico/              (Historico.jsx, styles.js)
+│   │   ├── OcorrenciasFalhas/      (OcorrenciasFalhas.jsx, styles.js)
+│   │   └── Funcionarios/           (Funcionarios.jsx, styles.js)
 │   └── components/
 │       ├── Header/                 (Header.jsx, styles.js)
 │       ├── Mapa/                   (Mapa.jsx, styles.js)
@@ -34,7 +40,9 @@ otis/
 │       ├── ChamadoCard/            (ChamadoCard.jsx, styles.js)
 │       ├── UrgenciaSection/        (UrgenciaSection.jsx, styles.js)
 │       ├── GraficoAtendimentos/    (GraficoAtendimentos.jsx, styles.js)
-│       └── HistoricoCard/          (HistoricoCard.jsx, styles.js)
+│       ├── HistoricoCard/          (HistoricoCard.jsx, styles.js)
+│       ├── FalhaCard/              (FalhaCard.jsx, styles.js)
+│       └── FuncionarioCard/        (FuncionarioCard.jsx, styles.js)
 └── legacy/                         # Versão estática anterior (HTML/CSS/JS)
 ```
 
@@ -69,10 +77,10 @@ otis/
 
 ## 6. Sincronização remota
 
-- Branch remota única: `origin/segunda-tela-albano` (HEAD padrão). **Não existe `main` no remoto.**
-- Equivalente correto de `git pull origin main`: `git pull origin segunda-tela-albano`.
-- Branch local de trabalho: `main` (renomeada de `feature/opencode-setup`), com upstream em `origin/feature/opencode-setup`.
-- Push usado: `git push origin main:feature/opencode-setup`.
+- `origin/main` existe (criada a partir do merge da `segunda-tela-albano`) e é o upstream da branch local `main`.
+- A `origin/segunda-tela-albano` continua sendo o HEAD padrão no GitHub até ser alterado nas configurações do repositório.
+- Merge de `segunda-tela-albano` na `main`: commit `935d24b`; backup anterior em `backup/main-before-merge`.
+- Push usado: `git push origin main`.
 
 ## 7. Telas implementadas
 
@@ -86,7 +94,15 @@ otis/
 
 - Card "Atendimentos realizados no ano" com gráfico SVG de barras (jan–dez), total, média, tooltip e tabela acessível `sr-only`; redimensionamento via `ResizeObserver`.
 - Seção "Ocorrências consertadas com sucesso" com 4 cards expansíveis contendo status, localização, data/hora, descrição, técnico, andamento, link "Detalhes do chamado" e **Recolher**.
-- Navegação compartilhada via `Header` + `NavLink` (link ativo destacado).
+
+### Ocorrências Falhas (`/falhas`)
+
+- 4 cards vermelhos expansíveis com tag **Finalizado**, localização, data/hora, descrição, prejuízo, responsável, andamento, link "Detalhes do chamado" e **Recolher**.
+
+### Funcionários e seus casos (`/funcionarios`)
+
+- 5 cards expansíveis com foto (importada via Vite), nome, métricas (atendidos, tempo médio, sucesso, falhas) e avaliação em estrelas.
+- Navegação compartilhada via `Header` + `NavLink` com 4 itens (Chamados, Histórico, Falhas, Funcionários), ícones SVG e link ativo destacado.
 
 ## 8. Problemas encontrados / corrigidos
 
@@ -97,6 +113,8 @@ otis/
 5. Dados mockados no HTML → centralizados em `src/data/`.
 6. CSS/JS monolíticos → separados em componentes com styled-components.
 7. Acessibilidade do mapa → `role="group"` com botões acessíveis (não `role="img"`).
+8. Erro de TDZ no `FuncionarioCard` (`Chevron` referenciado antes da declaração em `styles.js`) → declaração reordenada.
+9. Dev server antigo preso em estado inválido após vários HMR (tela em branco com build correto) → processo reiniciado; build e preview confirmaram a renderização.
 
 ## 9. Problemas remanescentes / melhorias sugeridas
 
@@ -107,8 +125,8 @@ otis/
 - Substituir mapa simulado por biblioteca real (Leaflet/Google Maps).
 - Adicionar favicon e meta tags Open Graph.
 - Considerar `HashRouter` caso o deploy estático não tenha fallback de SPA.
-- Padronizar a branch principal remota (`main`).
+- Definir `main` como branch padrão no GitHub (hoje `segunda-tela-albano` ainda é o HEAD).
 
 ## 10. Conclusão
 
-O projeto foi migrado integralmente para React com estrutura padrão (`components`, `pages`, `theme`, `data`), estilização por styled-components + Bootstrap e navegação por React Router. As telas **Chamados em Andamento** e **Histórico** estão implementadas e compartilham a mesma paleta. Build validado e renderização verificada em ambas as rotas (8 cards de chamados, 4 cards de histórico e 12 barras no gráfico).
+O projeto foi migrado integralmente para React com estrutura padrão (`components`, `pages`, `theme`, `data`, `assets`), estilização por styled-components + Bootstrap e navegação por React Router. As quatro telas — **Chamados em Andamento**, **Histórico**, **Ocorrências Falhas** e **Funcionários** — estão implementadas e compartilham a mesma paleta. Build validado e renderização verificada nas rotas (8 cards de chamados, 4 de histórico, 4 de falhas com tag Finalizado, 5 funcionários com fotos e 12 barras no gráfico).
