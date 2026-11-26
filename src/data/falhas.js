@@ -13,7 +13,7 @@ export const ocorrenciasFalhas = [
   },
   {
     id: 'FL-3008',
-    titulo: 'Shopping Norte - Escada rolante 1',
+    titulo: 'Shopping Norte - Elevador 3',
     resumo: 'Interrupção de energia',
     status: 'Finalizado',
     localizacao: 'Rua das Flores, 250 - Campinas',
