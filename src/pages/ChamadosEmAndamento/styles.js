@@ -8,9 +8,9 @@ export const Pagina = styled.main`
 export const PageHead = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px 16px;
   margin: 0 0 22px;
 `;
 
@@ -22,7 +22,19 @@ export const PageTitle = styled.h1`
   letter-spacing: -0.5px;
 `;
 
-export const PageSub = styled.span`
+export const PageSub = styled.p`
+  margin: 6px 0 0;
   color: ${colors.muted};
   font-size: 13px;
+`;
+
+export const Filtros = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: -8px 0 24px;
+`;
+
+export const Busca = styled.div`
+  max-width: 520px;
 `;

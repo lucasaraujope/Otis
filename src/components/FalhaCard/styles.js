@@ -82,7 +82,10 @@ export const Detalhes = styled.div`
 
 export const TagsRow = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   padding: 4px 0 14px;
 `;
 

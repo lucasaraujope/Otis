@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { colors } from '../../theme/colors.js';
 
 const abrirDetalhes = keyframes`
@@ -139,16 +140,30 @@ export const Descricao = styled.div`
 
 export const Acoes = styled.div`
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding-top: 14px;
   border-top: 1px solid #e8eef3;
+`;
+
+export const Tratar = styled(Link)`
+  color: ${colors.primary};
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    color: ${colors.primaryDark};
+    text-decoration: underline;
+  }
 `;
 
 export const Recolher = styled.button`
   padding: 0;
   border: 0;
   background: transparent;
-  color: ${colors.primary};
+  color: #66798a;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;

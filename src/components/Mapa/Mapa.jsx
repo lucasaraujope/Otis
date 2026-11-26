@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { niveisUrgencia } from '../../theme/colors.js';
+import { posicaoPorId } from '../../utils/ocorrencias.js';
 import {
   MapaWrapper,
   MapaTopo,
@@ -75,17 +77,19 @@ export default function Mapa({ chamados = [] }) {
 
         {chamados.map((chamado) => {
           const nivel = niveisUrgencia[chamado.urgencia] || niveisUrgencia.baixa;
+          const posicao = chamado.posicao || posicaoPorId(chamado.id);
 
           return (
             <PinWrapper
               key={chamado.id}
-              style={{ top: `${chamado.posicao.top}%`, left: `${chamado.posicao.left}%` }}
+              style={{ top: `${posicao.top}%`, left: `${posicao.left}%` }}
             >
               <PinButton
-                type="button"
+                as={Link}
+                to={`/ocorrencias/${chamado.id}`}
                 $color={nivel.color}
                 $pulse={chamado.urgencia === 'extrema'}
-                aria-label={`${nivel.label}: ${chamado.localizacao}`}
+                aria-label={`${nivel.label}: ${chamado.titulo}. Abrir chamado ${chamado.id}`}
                 aria-describedby={`tooltip-${chamado.id}`}
               >
                 <PinInner aria-hidden="true" />
@@ -93,7 +97,7 @@ export default function Mapa({ chamados = [] }) {
 
               <PinTooltip id={`tooltip-${chamado.id}`} role="tooltip">
                 <strong>{nivel.label}</strong>
-                <span>{chamado.localizacao}</span>
+                <span>{chamado.titulo}</span>
               </PinTooltip>
             </PinWrapper>
           );

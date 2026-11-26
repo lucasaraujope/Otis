@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Tag from '../Tag/Tag.jsx';
-import { statusCores } from '../../theme/colors.js';
+import { statusCores, tiposOcorrencia, tagTipo } from '../../theme/colors.js';
+import { buscarFuncionario } from '../../data/funcionarios.js';
+import { formatarDataHora } from '../../utils/ocorrencias.js';
 import {
   Card,
   CardHeader,
@@ -22,7 +25,9 @@ import {
 export default function FalhaCard({ ocorrencia }) {
   const [aberto, setAberto] = useState(false);
 
-  const status = statusCores[ocorrencia.status] || statusCores.Finalizado;
+  const status = statusCores[ocorrencia.status] || statusCores['Não resolvido'];
+  const tipo = tiposOcorrencia[ocorrencia.tipo];
+  const tecnico = buscarFuncionario(ocorrencia.tecnicoId);
   const detalhesId = `falha-detalhes-${ocorrencia.id}`;
 
   return (
@@ -35,7 +40,9 @@ export default function FalhaCard({ ocorrencia }) {
       >
         <CardHeading>
           <CardTitle>{ocorrencia.titulo}</CardTitle>
-          <CardSub>{ocorrencia.resumo}</CardSub>
+          <CardSub>
+            {tipo?.label} · {ocorrencia.descricao}
+          </CardSub>
         </CardHeading>
         <Chevron $aberto={aberto} aria-hidden="true">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -45,6 +52,9 @@ export default function FalhaCard({ ocorrencia }) {
       {aberto && (
         <Detalhes id={detalhesId}>
           <TagsRow>
+            <Tag color={tagTipo.color} soft={tagTipo.soft} border={tagTipo.border}>
+              {tipo?.label}
+            </Tag>
             <Tag color={status.color} soft={status.soft} border={status.border}>
               {ocorrencia.status}
             </Tag>
@@ -53,18 +63,18 @@ export default function FalhaCard({ ocorrencia }) {
           <InfoGrid>
             <InfoBlock>
               <InfoLabel>Localização</InfoLabel>
-              <InfoValue>{ocorrencia.localizacao}</InfoValue>
+              <InfoValue>{ocorrencia.endereco}</InfoValue>
             </InfoBlock>
             <InfoBlock>
-              <InfoLabel>Data e hora</InfoLabel>
-              <InfoValue>{ocorrencia.dataHora}</InfoValue>
+              <InfoLabel>Encerrado em</InfoLabel>
+              <InfoValue>{formatarDataHora(ocorrencia.encerramento)}</InfoValue>
             </InfoBlock>
           </InfoGrid>
 
           <InfoGrid>
             <InfoBlock>
-              <InfoLabel>Descrição</InfoLabel>
-              <InfoValue>{ocorrencia.descricao}</InfoValue>
+              <InfoLabel>Desfecho</InfoLabel>
+              <InfoValue>{ocorrencia.desfecho}</InfoValue>
             </InfoBlock>
             <InfoBlock>
               <InfoLabel>Prejuízo</InfoLabel>
@@ -75,16 +85,18 @@ export default function FalhaCard({ ocorrencia }) {
           <InfoGrid>
             <InfoBlock>
               <InfoLabel>Responsável</InfoLabel>
-              <InfoValue>{ocorrencia.responsavel}</InfoValue>
+              <InfoValue>{tecnico ? tecnico.nome : '—'}</InfoValue>
             </InfoBlock>
             <InfoBlock>
-              <InfoLabel>Andamento</InfoLabel>
-              <InfoValue>{ocorrencia.andamento}</InfoValue>
+              <InfoLabel>Aberto em</InfoLabel>
+              <InfoValue>{formatarDataHora(ocorrencia.abertura)}</InfoValue>
             </InfoBlock>
           </InfoGrid>
 
           <Acoes>
-            <DetalhesLink href="#detalhes">Detalhes do chamado</DetalhesLink>
+            <DetalhesLink as={Link} to={`/ocorrencias/${ocorrencia.id}`}>
+              Detalhes do chamado {ocorrencia.id}
+            </DetalhesLink>
             <Recolher type="button" onClick={() => setAberto(false)}>
               Recolher
             </Recolher>

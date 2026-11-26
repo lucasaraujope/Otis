@@ -9,7 +9,7 @@ import {
   Empty,
 } from './styles.js';
 
-export default function UrgenciaSection({ nivel, chamados }) {
+export default function UrgenciaSection({ nivel, chamados, reincidencias }) {
   return (
     <Section aria-labelledby={`titulo-${nivel.id}`}>
       <SectionHeader>
@@ -23,7 +23,11 @@ export default function UrgenciaSection({ nivel, chamados }) {
       {chamados.length > 0 ? (
         <Cards>
           {chamados.map((chamado) => (
-            <ChamadoCard key={chamado.id} chamado={chamado} />
+            <ChamadoCard
+              key={chamado.id}
+              chamado={chamado}
+              reincidencia={reincidencias ? reincidencias(chamado) : 0}
+            />
           ))}
         </Cards>
       ) : (

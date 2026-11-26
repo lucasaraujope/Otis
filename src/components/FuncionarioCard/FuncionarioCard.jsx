@@ -54,7 +54,7 @@ export default function FuncionarioCard({ funcionario }) {
         <Detalhes id={detalhesId}>
           <InfoGrid>
             <InfoBlock>
-              <InfoLabel>Quantidade de chamados atendidos</InfoLabel>
+              <InfoLabel>Chamados encerrados</InfoLabel>
               <InfoValue>{funcionario.atendidos}</InfoValue>
             </InfoBlock>
             <InfoBlock>
@@ -78,6 +78,10 @@ export default function FuncionarioCard({ funcionario }) {
             <InfoBlock>
               <InfoLabel>Avaliação</InfoLabel>
               <Estrelas nota={funcionario.avaliacao} />
+            </InfoBlock>
+            <InfoBlock>
+              <InfoLabel>Chamados ativos agora</InfoLabel>
+              <InfoValue>{funcionario.emAberto}</InfoValue>
             </InfoBlock>
           </InfoGrid>
 

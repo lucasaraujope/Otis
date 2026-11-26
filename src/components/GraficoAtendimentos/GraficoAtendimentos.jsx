@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { atendimentosPorMes } from '../../data/historico.js';
 import {
   GraficoCard,
   GraficoTopo,
@@ -38,7 +37,7 @@ function caminhoBarra(x, y, largura, altura, raio) {
   ].join(' ');
 }
 
-export default function GraficoAtendimentos({ dados = atendimentosPorMes }) {
+export default function GraficoAtendimentos({ dados = [], ano }) {
   const areaRef = useRef(null);
   const [largura, setLargura] = useState(0);
   const [tooltip, setTooltip] = useState(null);
@@ -69,7 +68,7 @@ export default function GraficoAtendimentos({ dados = atendimentosPorMes }) {
     () => dados.reduce((soma, item) => soma + item.valor, 0),
     [dados]
   );
-  const media = Math.round(total / dados.length);
+  const media = dados.length ? Math.round(total / dados.length) : 0;
 
   const compacto = largura < 520;
   const altura = compacto ? 250 : 330;
@@ -92,7 +91,7 @@ export default function GraficoAtendimentos({ dados = atendimentosPorMes }) {
     return { valor, y: baseY - (valor / topo) * plotAltura };
   });
 
-  const banda = plotLargura / dados.length;
+  const banda = plotLargura / Math.max(dados.length, 1);
   const larguraBarra = Math.min(banda * 0.58, 38);
   const raio = Math.min(6, larguraBarra / 2);
   const mostrarTodosRotulos = banda >= 34;
@@ -105,9 +104,9 @@ export default function GraficoAtendimentos({ dados = atendimentosPorMes }) {
     <GraficoCard aria-labelledby="titulo-grafico">
       <GraficoTopo>
         <Cabecalho>
-          <Titulo id="titulo-grafico">Atendimentos realizados no ano</Titulo>
+          <Titulo id="titulo-grafico">Atendimentos encerrados em {ano}</Titulo>
           <Subtitulo>
-            {dados.length} meses · média de {formatarNumero.format(media)} por mês
+            {dados.length} {dados.length === 1 ? 'mês' : 'meses'} · média de {formatarNumero.format(media)} por mês
           </Subtitulo>
         </Cabecalho>
 
