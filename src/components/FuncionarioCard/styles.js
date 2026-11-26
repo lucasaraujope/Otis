@@ -24,17 +24,15 @@ export const Card = styled.article`
 `;
 
 export const Chevron = styled.span`
-  flex: 0 0 30px;
+  flex: 0 0 22px;
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border: 1px solid #e5ebef;
   border-radius: 50%;
   background: #f5f8fa;
   color: #607485;
-  font-size: 20px;
-  line-height: 1;
   transform: rotate(${({ $aberto }) => ($aberto ? '180deg' : '0deg')});
   transition: transform 0.2s ease, border-color 0.15s ease, color 0.15s ease;
 `;
